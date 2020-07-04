@@ -1,0 +1,91 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification\ 
+for details on configuring this project to bundle and minify static web assets. */
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+body table {
+    text-align: center;
+}
+body table th {
+    text-align: center;
+}
+#tabela_estoque {
+    width:80%;
+}
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Carousel */
+.carousel-caption p {
+    font-size: 20px;
+    line-height: 1.4;
+}
+
+/* Make .svg files in the carousel display properly in older browsers */
+.carousel-inner .item img[src$=".svg"] {
+    width: 100%;
+}
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+div#divContainer.container.body-content {
+    width: 80%;
+}
+
+/* Hide/rearrange for smaller screens */
+@media screen and (max-width: 767px) {
+    /* Hide captions */
+    .carousel-caption {
+        display: none;
+    }
+}
+#full-screen-background-image {
+    z-index: -999;
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: fixed;
+    top: 0;
+    left: 0;
+    opacity: 0.4; 
+}
+.card {
+    margin-top: 1em;
+    background-color: lightgrey;
+    border: solid 1px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-color: white;
+    color: black;
+
+    max-height: 25em;
+    min-height: 25em;
+}
+.card a {
+   text-align: right;
+}
+.card-img-top{
+    width:100%;
+    max-height: 80%;
+    min-height: 80%;
+}
+#div_search{
+    float:right;
+}
+#pesquisa{
+    display:inline-flex;
+}
+#button {
+    height:80%;
+}

@@ -1,0 +1,48 @@
+﻿@model Livraria.Models.ViewModel.NotaViewModel
+
+<h2>Nota de locação</h2>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <input type ="hidden" asp-for="Nota.Id" />
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Nota.Data_retirada" class="control-label"></label>
+                <input asp-for="Nota.Data_retirada" class="form-control" />
+                <span asp-validation-for="Nota.Data_retirada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nota.Data_vencimento" class="control-label"></label>
+                <input asp-for="Nota.Data_vencimento" class="form-control" />
+                <span asp-validation-for="Nota.Data_vencimento" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nota.Data_renovacao" class="control-label"></label>
+                <input asp-for="Nota.Data_renovacao" class="form-control" />
+                <span asp-validation-for="Nota.Data_renovacao" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nota.Nr_renovacoes" class="control-label"></label>
+                <input asp-for="Nota.Nr_renovacoes" class="form-control" />
+                <span asp-validation-for="Nota.Nr_renovacoes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nota.LivroId" class="control-label"></label>
+                <select type="search" asp-for="Nota.LivroId" asp-items="@(new SelectList(Model.Livro,"Id","Titulo"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Nota.ClienteId" class="control-label"></label>
+                <select type="search" asp-for="Nota.ClienteId" asp-items="@(new SelectList(Model.Cliente,"Id","Nome"))" class="form-control"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+

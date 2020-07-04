@@ -1,0 +1,79 @@
+﻿@model IEnumerable<Livraria.Models.Nota>
+<h2>Notas de Locação em Aberto</h2>
+<div class="row col-lg-12">
+    <div class="col-lg-3">
+        <a class="btn btn-success" asp-action="Create">Cadastrar Nota</a>
+    </div>
+    <form>
+        <div id="div_search" class="col-lg-3">
+            <input placeholder="Faça sua pesquisa" class="form-control" type="text" id="search">
+        </div>
+    </form>
+</div>
+<br />
+<br />
+<br />
+<div class="row col-12">
+    <table class="table col-12">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_retirada)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_vencimento)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Data_renovacao)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nr_renovacoes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Livro)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Cliente)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_retirada)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_vencimento)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Data_renovacao)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nr_renovacoes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Livro.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Cliente.Nome)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-info" asp-controller="Notas" asp-action="Renovar" asp-route-id="@item.Id">Renovar</a>
+                        <a class="btn btn-dark" asp-controller="Notas" asp-action="Desalocar" asp-route-id="@item.Id">Desalocar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="jquery.js"></script>
+<script src="~/js/search/src/jquery.quicksearch.js"></script>
+<script>
+    $('input#search').quicksearch('table tbody tr');
+
+</script>

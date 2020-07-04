@@ -1,0 +1,43 @@
+﻿@model IEnumerable<Livraria.Models.Estoque>
+
+@{
+    ViewData["Title"] = "Criar um novo estoque";
+}
+
+<h2>@ViewData["Title"]</h2>
+<p>
+    <a class="btn btn-success" asp-action="Create">Criar Novo Estoque</a>
+</p>
+<table id="tabela_estoque"class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nome_estoque)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Responsavel)
+            </th>
+            <th>
+                Ações
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome_estoque)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Responsavel)
+                </td>
+                <td>
+                    <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a> 
+                    <a class="btn btn-success" asp-action="BuscarLivros" asp-route-id="@item.Id">Ver Livros do Estoque</a>
+                    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Deletar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

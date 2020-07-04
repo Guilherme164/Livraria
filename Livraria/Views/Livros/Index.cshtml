@@ -1,0 +1,86 @@
+﻿@model IEnumerable<Livraria.Models.Livro>
+
+<div class="mt-4 col-8">
+    <h4>Livros registrados no Estoque</h4>
+    <div class="row col-lg-12">
+        <div class="col-lg-3">
+            <a class="btn btn-success" asp-controller="Livros" asp-action="Create">Cadastrar Livro</a>
+        </div>
+        <div class="col-lg-6">
+            <form id="pesquisa" asp-controller="Livros" asp-action="Search" method="get">
+
+                <div class="form-group">
+                    <input id="word" placeholder="Pesquise um TÍTULO" name="word" class="form-control" />
+                </div>
+                <input id="button" type="submit" class="btn btn-primary" value="Procurar">
+
+            </form>
+        </div>
+        <div class="col-3" id="div_search">
+            <form>
+                <input placeholder="Faça sua pesquisa rápida" class="form-control" type="text" id="search">
+            </form>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Titulo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Editora)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Autor)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Disponibilidade)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Estoque)
+                </th>
+                <th>
+                    Ações
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Titulo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Editora)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Autor)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Disponibilidade)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Estoque.Nome_estoque)
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Editar</a>
+                        <!--    <a asp-action="Alocate" asp-route-id="">Alocar para um cliente</a> |-->
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                        <a class="btn btn-success" asp-action="Adicionarlivro" asp-route-id="@item.Id">+</a>
+
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="jquery.js"></script>
+<script src="~/js/search/src/jquery.quicksearch.js"></script>
+<script>
+    $('input#search').quicksearch('table tbody tr');
+
+</script>

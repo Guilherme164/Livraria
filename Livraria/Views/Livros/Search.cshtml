@@ -1,0 +1,75 @@
+﻿@model Livraria.Models.ViewModel.NotaClienteViewModel
+<h2>Livros encontrados:</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Quantidade
+            </th>
+            <th>
+                Título
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                @ViewData["Qtd"]
+            </td>
+            <td>
+                @ViewData["Titulo"]
+            </td>
+            <td>
+                <a  class= "btn btn-primary" asp-action="Edit" asp-route-id="@ViewData["Id"]">Editar</a> |
+                <a class= "btn btn-danger" asp-action="Delete" asp-route-id="@ViewData["Id"]">Delete</a>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                    Alocar
+                </button>
+            </td>
+        </tr>
+
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-12">
+                        <form asp-controller="Notas" asp-action="Alocate">
+                            <input type="hidden" asp-for="@ViewData["Id"]" name="Nota.LivroId" />
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <fieldset>
+                                <legend>Adicionar um cliente a nota</legend>
+                                
+                                <div class="form-group">
+                                    <label asp-for="Nota.ClienteId" class="control-label"></label>
+                                    <select type="search" asp-for="Nota.ClienteId" asp-items="@(new SelectList(Model.Cliente,"Id","Nome"))" class="form-control"></select>
+                                </div>
+                            </fieldset>
+                            <div class="form-group">
+                                <input type="submit" value="Create" class="btn btn-default" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
